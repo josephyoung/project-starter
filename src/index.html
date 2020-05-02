@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>QBXX项目启动器</title>
+  <style>
+    html {
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    #x2,
+    #x1 {
+      height: 100%;
+      padding-top: 30px;
+      box-sizing: border-box;
+    }
+
+    #x1 {
+      padding: 40px 0 0 20px;
+    }
+
+    #x2 {
+      padding-bottom: 5px;
+    }
+
+    .terminal-wrapper-outer {
+      height: 100%;
+      font-size: 0;
+    }
+
+    .terminal-wrapper {
+      display: inline-block;
+      width: 50%;
+      height: 100%;
+      vertical-align: top;
+    }
+
+    .terminal {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      vertical-align: top;
+    }
+
+    .menu {
+      list-style-type: none;
+      margin-block-start: 0;
+      margin-block-end: 0;
+      padding-inline-start: 0;
+      box-shadow: 0 0 3px 3px #ddd;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .menu-item {
+      display: inline-block;
+      cursor: pointer;
+      line-height: 25px;
+      padding: 0 5px;
+    }
+
+    .menu-item:hover {
+      background-color: #f7f8fd;
+    }
+
+    .settings-label {
+      display: inline-block;
+      width: 150px;
+    }
+
+    .settings-input {
+      width: 500px;
+      margin-bottom: 10px;
+    }
+
+    .settings-button {
+      width: 104px;
+      line-height: 30px;
+      border-radius: 4px;
+      outline: none;
+      border: 1px solid #e5e5e5;
+      cursor: pointer;
+    }
+
+    .settings-button:hover {
+      color: #fff;
+      background-color: #307eff;
+    }
+
+    .settings-button:active {
+      color: #fff;
+      background-color: #301eff;
+    }
+
+    .button-wrapper {
+      padding: 10px 0 10px 554px;
+    }
+
+    .script-label,
+    .script-textarea {
+      vertical-align: top;
+    }
+
+    .script-label {
+      display: inline-block;
+      width: 150px;
+    }
+
+    .script-textarea {
+      margin-bottom: 10px;
+    }
+
+    .vh {
+      visibility: hidden;
+    }
+
+    .reference {
+      color: #ddd
+    }
+  </style>
+</head>
+
+<body>
+  <ul class="menu">
+    <li class="menu-item">
+      <a id="settings">终端</a>
+    </li>
+    <li class="menu-item">
+      <a id="start-terminal">启动项目</a>
+    </li>
+    <li class="menu-item">
+      <a id="restart-frontend">重启前端</a>
+    </li>
+    <li class="menu-item">
+      <a id="restart-backend">重启后台</a>
+    </li>
+    <li class="menu-item">
+      <a id="update-frontend">更新前端</a>
+    </li>
+    <li class="menu-item">
+      <a id="update-backend">更新后台</a>
+    </li>
+    <li class="menu-item">
+      <a id="script-setting">脚本配置</a>
+    </li>
+    <li class="menu-item">
+      <a id="exit">退出程序</a>
+    </li>
+    <li class="menu-item">
+      <a id="about">关于</a>
+    </li>
+  </ul>
+  <div id="x1">
+    <form name="project-settings">
+      <div>
+        <label for="front-end-directory" class="settings-label">前端项目路径</label>
+        <input type="text" id="frontend-directory" name="front-end-directory" required class="settings-input">
+      </div>
+      <div>
+        <label for="back-end-directory" class="settings-label">后台项目路径</label>
+        <input type="text" id="backend-directory" name="back-end-directory" required class="settings-input">
+      </div>
+      <div>
+        <label for="svn_home" class="settings-label">svn主目录</label>
+        <input type="text" id="svn_home" name="svn_home" required class="settings-input">
+      </div>
+      <div>
+        <label for="maven_home" class="settings-label">maven主目录</label>
+        <input type="text" id="maven_home" name="maven_home" required class="settings-input">
+      </div>
+      <div>
+        <label for="CATALINA_TMPDIR" class="settings-label">CATALINA_TMPDIR</label>
+        <input type="text" id="CATALINA_TMPDIR" name="CATALINA_TMPDIR" required class="settings-input">
+      </div>
+      <div>
+        <label for="JAVA_HOME" class="settings-label">JAVA_HOME</label>
+        <input type="text" id="JAVA_HOME" name="JAVA_HOME" required class="settings-input">
+      </div>
+      <div>
+        <label for="CLASSPATH" class="settings-label">CLASSPATH</label>
+        <input type="text" id="CLASSPATH" name="CLASSPATH" required class="settings-input">
+      </div>
+      <div class="button-wrapper">
+        <input type="submit" id="project-settings-submit" value="保存" class="settings-button">
+      </div>
+      <div id="script-setting-wrapper" class="vh">
+        <div>
+          <label for="frontend-script" class="script-label">前端启动脚本</label>
+          <textarea name="frontend-script" id="frontend-script" cols="67" rows="5" class="script-textarea"></textarea>
+        </div>
+        <div>
+          <label for="backend-script" class="script-label">
+            后台启动脚本
+          </label>
+          <textarea name="backend-script" id="backend-script" cols="67" rows="8" class="script-textarea"
+            placeholder="[参数] 后台项目路径: $backend-directory, svn目录: $svn_home,maven目录: $maven_home, $CATALINA_TMPDIR, $JAVA_HOME, $CLASSPATH"></textarea>
+        </div>
+        <div class="button-wrapper">
+          <input type="submit" id="script-submit" value="保存脚本" class="settings-button">
+        </div>
+        <div class="reference">参数引用: $backend-directory, $svn_home, $maven_home, $CATALINA_TMPDIR, $JAVA_HOME,
+          $CLASSPATH</div>
+      </div>
+    </form>
+  </div>
+  <div id="x2">
+    <div class="terminal-wrapper-outer" id="terminal-wrapper">
+      <div class="terminal-wrapper">
+        <div id="terminal1" class="terminal"></div>
+      </div>
+      <div class="terminal-wrapper">
+        <div id="terminal2" class="terminal"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

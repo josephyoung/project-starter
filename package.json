@@ -1,0 +1,85 @@
+{
+  "name": "project-starter",
+  "productName": "project-starter",
+  "version": "1.0.0",
+  "description": "to start frontend & backend dev server",
+  "main": ".webpack/main",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "josephyoung",
+    "email": "2t@live.com"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [{
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "project_starter"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ],
+      "plugins": [
+        [
+          "@electron-forge/plugin-webpack",
+          {
+            "mainConfig": "./webpack.main.config.js",
+            "renderer": {
+              "config": "./webpack.renderer.config.js",
+              "entryPoints": [{
+                "html": "./src/index.html",
+                "js": "./src/renderer.js",
+                "name": "main_window",
+                "preload": {
+                  "js": "./src/preload.js"
+                }
+              }]
+            }
+          }
+        ]
+      ]
+    }
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "6.0.0-beta.50",
+    "@electron-forge/maker-deb": "6.0.0-beta.50",
+    "@electron-forge/maker-rpm": "6.0.0-beta.50",
+    "@electron-forge/maker-squirrel": "6.0.0-beta.50",
+    "@electron-forge/maker-zip": "6.0.0-beta.50",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.50",
+    "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+    "css-loader": "^3.0.0",
+    "electron": "8.2.4",
+    "node-loader": "^0.6.0",
+    "style-loader": "^0.23.1"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
+    "node-pty": "^0.9.0",
+    "xterm": "^4.5.0",
+    "xterm-addon-fit": "^0.3.0",
+    "xterm-addon-web-links": "^0.3.0"
+  }
+}

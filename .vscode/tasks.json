@@ -1,0 +1,30 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "install",
+			"problemMatcher": [],
+			"label": "npm: install",
+			"detail": "install dependencies from package"
+		},
+		{
+			"type": "npm",
+			"script": "start",
+			"problemMatcher": [
+				"$eslint-compact"
+			],
+			"label": "npm: start",
+			"detail": "electron-forge start"
+		},
+		{
+			"type": "npm",
+			"script": "make",
+			"problemMatcher": [
+				"$eslint-compact"
+			],
+			"label": "npm: make",
+			"detail": "electron-forge make"
+		}
+	]
+}
