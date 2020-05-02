@@ -2,7 +2,7 @@
   "name": "project-starter",
   "productName": "project-starter",
   "version": "1.0.0",
-  "description": "to start frontend & backend dev server",
+  "description": "help to start your frontend and backend development servers",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
@@ -20,7 +20,8 @@
   "config": {
     "forge": {
       "packagerConfig": {},
-      "makers": [{
+      "makers": [
+        {
           "name": "@electron-forge/maker-squirrel",
           "config": {
             "name": "project_starter"
@@ -48,14 +49,16 @@
             "mainConfig": "./webpack.main.config.js",
             "renderer": {
               "config": "./webpack.renderer.config.js",
-              "entryPoints": [{
-                "html": "./src/index.html",
-                "js": "./src/renderer.js",
-                "name": "main_window",
-                "preload": {
-                  "js": "./src/preload.js"
+              "entryPoints": [
+                {
+                  "html": "./src/index.html",
+                  "js": "./src/renderer.js",
+                  "name": "main_window",
+                  "preload": {
+                    "js": "./src/preload.js"
+                  }
                 }
-              }]
+              ]
             }
           }
         ]
