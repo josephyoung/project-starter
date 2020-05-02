@@ -13,15 +13,14 @@
   },
   "keywords": [],
   "author": {
-    "name": "josephyoung",
-    "email": "2t@live.com"
+    "name": "J.Y.",
+    "email": "josephyoung@outlook.com"
   },
   "license": "MIT",
   "config": {
     "forge": {
       "packagerConfig": {},
-      "makers": [
-        {
+      "makers": [{
           "name": "@electron-forge/maker-squirrel",
           "config": {
             "name": "project_starter"
@@ -49,16 +48,14 @@
             "mainConfig": "./webpack.main.config.js",
             "renderer": {
               "config": "./webpack.renderer.config.js",
-              "entryPoints": [
-                {
-                  "html": "./src/index.html",
-                  "js": "./src/renderer.js",
-                  "name": "main_window",
-                  "preload": {
-                    "js": "./src/preload.js"
-                  }
+              "entryPoints": [{
+                "html": "./src/index.html",
+                "js": "./src/renderer.js",
+                "name": "main_window",
+                "preload": {
+                  "js": "./src/preload.js"
                 }
-              ]
+              }]
             }
           }
         ]
