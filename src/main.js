@@ -11,10 +11,11 @@ const pty = require('node-pty');
 const cfg = require('./config');
 
 const info = [
-  'Name: project starter',
-  'Version: 1.0.0',
-  'Author: J.Y.',
-  'Email: josephyoung@outlook.com',
+  `Name: ${process.env.npm_package_productName}`,
+  `Version: ${process.env.npm_config_init_version}`,
+  `Author: ${process.env.npm_package_author_name}`,
+  `Email: ${process.env.npm_package_author_email}`,
+  `License: ${process.env.npm_config_init_license}`,
   'Date: May 1, 2020',
 ];
 
