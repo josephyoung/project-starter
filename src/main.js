@@ -19,6 +19,8 @@ const info = [
   'Date: May 1, 2020',
 ];
 
+// set CATALINA_BASE=$CATALINA_BASE\nset CATALINA_HOME=$CATALINA_HOME\nset JRE_HOME=$JRE_HOME\nset MAVEN_HOME=$maven_home\nset SVN_HOME=$svn_home\nset CATALINA_TMPDIR=$CATALINA_HOME\\temp\nset JAVA_HOME=%JRE_HOME\nset CLASSPATH=$CLASSPATH\n
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   // eslint-disable-line global-require
@@ -43,7 +45,7 @@ const createWindow = () => {
   // eslint-disable-next-line no-undef
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
   Menu.setApplicationMenu(null);
-  const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash';
+  const shell = os.platform() === 'win32' ? 'cmd.exe' : 'bash';
 
   const cwd = process.env.Home;
   const ptyGen = id => {
@@ -69,11 +71,12 @@ const createWindow = () => {
   // 窗口最大化
   // mainWindow.maximize();
   // mainWindow.show();
+
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
 
-  const frontend = 'frontend-directory';
-  const backend = 'backend-directory';
+  const frontend = 'frontend_directory';
+  const backend = 'backend_directory';
   const pty1 = ptyGen('terminal1');
   const pty2 = ptyGen('terminal2');
   const terminals = {
@@ -102,6 +105,8 @@ const createWindow = () => {
         return cmd;
       });
     })();
+    const setEnv = require('./setEnvironment').default;
+    setEnv(dirs, terminals[backend]);
     backendScripts.forEach(command => terminals[backend].write(`${command}\r`));
   };
 

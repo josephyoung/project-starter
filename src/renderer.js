@@ -2,6 +2,7 @@ import './index.css';
 import func from './function';
 import term from './term';
 import cfg from './config';
+import defaultScript from './defaultScript.json';
 
 // 初始化并生成terminal
 term.getXterm1();
@@ -9,21 +10,31 @@ term.getXterm2();
 
 // 读取localstorage存储, 赋值input, 并用dirs保存
 // 默认值
-const dirs = {
-  'frontend-directory': '',
-  'backend-directory': '',
-  svn_home: '',
-  maven_home: '',
-  CATALINA_TMPDIR: '',
-  JAVA_HOME: '',
-  CLASSPATH: '',
-};
+const dirs = cfg.defaultValues;
 let flagAllSet = true;
+const form = document.getElementById('project-settings');
+const buttonWrapper = document.getElementById('button-wrapper');
 cfg.ids.forEach(id => {
+  const formItem = document.createElement('div');
+  const label = document.createElement('label');
+  label.setAttribute('for', id);
+  label.className = 'settings-label';
+  label.textContent = id;
+  const input = document.createElement('input');
+  input.setAttribute('type', 'text');
+  input.setAttribute('id', id);
+  input.setAttribute('name', id);
+  input.setAttribute('required', true);
+  input.className = 'settings-input';
+  formItem.appendChild(label);
+  formItem.appendChild(input);
+  form.insertBefore(formItem, buttonWrapper);
   const value = localStorage.getItem(id);
   if (value) {
-    document.getElementById(id).value = value;
+    input.value = value;
     dirs[id] = value;
+  } else if (dirs[id]) {
+    input.value = dirs[id];
   } else if (cfg.required.includes(id)) {
     flagAllSet = false;
   }
@@ -34,10 +45,7 @@ cfg.openDir.forEach(id => func.addInputListener(id));
 
 /* 脚本处理 */
 // 默认值
-const scripts = {
-  'frontend-script': '',
-  'backend-script': '',
-};
+const scripts = defaultScript;
 
 cfg.scripts.forEach(key => {
   const value = localStorage.getItem(key);

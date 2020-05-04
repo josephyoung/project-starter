@@ -1,0 +1,4 @@
+{
+  "frontend-script": "npm start",
+  "backend-script": "\"$maven_home\\bin\\mvn\" --batch-mode clean install & \"$CATALINA_HOME\\bin\\catalina.bat\" run"
+}

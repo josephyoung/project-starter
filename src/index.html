@@ -163,14 +163,14 @@
     </li>
   </ul>
   <div id="x1">
-    <form name="project-settings">
-      <div>
+    <form name="project-settings" id="project-settings">
+      <!-- <div>
         <label for="front-end-directory" class="settings-label">前端项目路径</label>
-        <input type="text" id="frontend-directory" name="front-end-directory" required class="settings-input">
+        <input type="text" id="frontend_directory" name="front-end-directory" required class="settings-input">
       </div>
       <div>
         <label for="back-end-directory" class="settings-label">后台项目路径</label>
-        <input type="text" id="backend-directory" name="back-end-directory" required class="settings-input">
+        <input type="text" id="backend_directory" name="back-end-directory" required class="settings-input">
       </div>
       <div>
         <label for="svn_home" class="settings-label">svn主目录</label>
@@ -191,8 +191,8 @@
       <div>
         <label for="CLASSPATH" class="settings-label">CLASSPATH</label>
         <input type="text" id="CLASSPATH" name="CLASSPATH" required class="settings-input">
-      </div>
-      <div class="button-wrapper">
+      </div> -->
+      <div class="button-wrapper" id="button-wrapper">
         <input type="submit" id="project-settings-submit" value="保存" class="settings-button">
       </div>
       <div id="script-setting-wrapper" class="vh">
@@ -205,12 +205,12 @@
             后台启动脚本
           </label>
           <textarea name="backend-script" id="backend-script" cols="67" rows="8" class="script-textarea"
-            placeholder="[参数] 后台项目路径: $backend-directory, svn目录: $svn_home,maven目录: $maven_home, $CATALINA_TMPDIR, $JAVA_HOME, $CLASSPATH"></textarea>
+            placeholder="[参数] 后台项目路径: $backend_directory, svn目录: $svn_home,maven目录: $maven_home, $CATALINA_TMPDIR, $JAVA_HOME, $CLASSPATH"></textarea>
         </div>
         <div class="button-wrapper">
           <input type="submit" id="script-submit" value="保存脚本" class="settings-button">
         </div>
-        <div class="reference">参数引用: $backend-directory, $svn_home, $maven_home, $CATALINA_TMPDIR, $JAVA_HOME,
+        <div class="reference">参数引用: $backend_directory, $svn_home, $maven_home, $CATALINA_TMPDIR, $JAVA_HOME,
           $CLASSPATH</div>
       </div>
     </form>
