@@ -20,7 +20,8 @@
   "config": {
     "forge": {
       "packagerConfig": {},
-      "makers": [{
+      "makers": [
+        {
           "name": "@electron-forge/maker-squirrel",
           "config": {
             "name": "project_starter"
@@ -48,14 +49,16 @@
             "mainConfig": "./webpack.main.config.js",
             "renderer": {
               "config": "./webpack.renderer.config.js",
-              "entryPoints": [{
-                "html": "./src/index.html",
-                "js": "./src/renderer.js",
-                "name": "main_window",
-                "preload": {
-                  "js": "./src/preload.js"
+              "entryPoints": [
+                {
+                  "html": "./src/index.html",
+                  "js": "./src/renderer.js",
+                  "name": "main_window",
+                  "preload": {
+                    "js": "./src/preload.js"
+                  }
                 }
-              }]
+              ]
             }
           }
         ]
@@ -76,6 +79,7 @@
     "style-loader": "^0.23.1"
   },
   "dependencies": {
+    "@zeit/webpack-asset-relocator-loader": "^0.7.0",
     "electron-squirrel-startup": "^1.0.0",
     "node-pty": "^0.9.0",
     "xterm": "^4.5.0",

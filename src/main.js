@@ -162,7 +162,7 @@ const createWindow = () => {
     stopTask(key).then(() =>
       setTimeout(() => {
         if (dirs['svn_home']) {
-          terminals[key].write(dirs['svn_home'] + '\\svn.exe update\r');
+          terminals[key].write('"' + dirs['svn_home'] + '\\bin\\svn.exe" update\r');
         } else {
           terminals[key].write('svn update\r');
         }

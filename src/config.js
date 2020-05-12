@@ -13,8 +13,8 @@ export default {
   defaultValues: {
     frontend_directory: '',
     backend_directory: '',
-    svn_home: 'c:\\program files\\TortoiseSVN',
-    maven_home: 'd:\\maven\\apache-maven-3.3.9',
+    svn_home: '',
+    maven_home: '',
     JRE_HOME: 'd:\\program files\\java\\jdk1.8.0_121',
     CATALINA_BASE:
       'c:\\users\\administrator\\.intellijidea2017.3\\system\\tomcat\\unnamed_qbxxpt_3',

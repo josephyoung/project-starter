@@ -519,6 +519,11 @@
   resolved "http://localhost:4873/@xtuc%2flong/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha1-0pHGpOl5ibXGHZrPOWrk/hM6cY0=
 
+"@zeit/webpack-asset-relocator-loader@^0.7.0":
+  version "0.7.0"
+  resolved "http://localhost:4873/@zeit%2fwebpack-asset-relocator-loader/-/webpack-asset-relocator-loader-0.7.0.tgz#d7549a7f00b123fc0fabdc9ebcbcb55289ee4ba6"
+  integrity sha1-11SafwCxI/wPq9yevLy1UonuS6Y=
+
 abbrev@1:
   version "1.1.1"
   resolved "http://localhost:4873/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"

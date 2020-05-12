@@ -10,7 +10,20 @@ module.exports = [
     use: {
       loader: '@marshallofsound/webpack-asset-relocator-loader',
       options: {
-        outputAssetBase: 'native_modules',
+        outputAssetBase: 'assets',
+        production: true,
+        filterAssetBase: process.cwd(),
+        emitDirnameAll: true,
+        emitFilterAssetBaseAll: false,
+        existingAssetNames: [
+          'node-pty',
+          'winpty.dll',
+          'conpty',
+          'winpty-agent.exe'
+        ],
+        wrapperCompatibility: false,
+        cwd: process.cwd(),
+        debugLog: false,
       },
     },
   },
